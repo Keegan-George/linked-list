@@ -1,22 +1,30 @@
 class LinkedList {
   constructor() {
-    this.head = null;
-    this.tail = null;
+    this._head;
+    this._tail;
   }
 
   append(value) {
     const node = new Node(value);
 
     if (!this.head) {
-      this.head = node;
+      this._head = node;
     }
 
     if (!this.tail) {
-      this.tail = node;
+      this._tail = node;
     } else {
       this.tail.nextNode = node;
-      this.tail = node;
+      this._tail = node;
     }
+  }
+
+  get head() {
+    return this._head;
+  }
+
+  get tail() {
+    return this._tail;
   }
 }
 
@@ -28,9 +36,15 @@ class Node {
 }
 
 const linkedList = new LinkedList();
-linkedList.append("A");
-linkedList.append("B");
-linkedList.append("C");
-linkedList.append("D");
+const head = linkedList.head;
+const tail = linkedList.tail;
+
+// const linkedList = new LinkedList();
+// linkedList.append("A");
+// linkedList.append("B");
+// linkedList.append("C");
+// linkedList.append("D");
+// const head = linkedList.head;
+// const tail = linkedList.tail;
 
 const pass = "pass";
