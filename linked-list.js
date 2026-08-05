@@ -49,6 +49,23 @@ class LinkedList {
   get tail() {
     return this._tail;
   }
+
+  pop() {
+    // save the value and nextNode properties of the head node
+    const value = this._head.value;
+    const next_node = this._head.nextNode;
+
+    // remove the current head node references
+    this._head.value = null;
+    this._head.nextNode = null;
+
+    //set head to the next node in the list
+    this._head = next_node;
+
+    this._size--;
+
+    return value;
+  }
 }
 
 class Node {
@@ -59,17 +76,12 @@ class Node {
 }
 
 // const linkedList = new LinkedList();
-// const head = linkedList.head;
-// const tail = linkedList.tail;
-
-// const linkedList = new LinkedList();
-// linkedList.append("A");
 // linkedList.append("B");
 // linkedList.append("C");
 // linkedList.append("D");
-// linkedList.prepend("E");
+// linkedList.prepend("A");
+// const size = linkedList.size;
+// const popped = linkedList.pop();
 // const head = linkedList.head;
 // const tail = linkedList.tail;
-// const size = linkedList.size;
-
 // const pass = "pass";
