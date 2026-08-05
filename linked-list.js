@@ -105,6 +105,10 @@ class LinkedList {
   }
 
   toString() {
+    if (!this._size) {
+      return "";
+    }
+
     const values = [];
 
     let current = this._head;
