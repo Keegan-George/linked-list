@@ -91,6 +91,18 @@ class LinkedList {
 
     return false;
   }
+
+  findIndex(value) {
+    let current = this._head;
+
+    for (let i = 0; i < this._size; i++) {
+      if (current.value === value) {
+        return i;
+      }
+      current = current.nextNode;
+    }
+    return -1;
+  }
 }
 
 class Node {
@@ -111,4 +123,5 @@ const head = linkedList.head;
 const tail = linkedList.tail;
 const at = linkedList.at(1);
 const contains = linkedList.contains("A");
+const index = linkedList.findIndex("d");
 const pass = "pass";
