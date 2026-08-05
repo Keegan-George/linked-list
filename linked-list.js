@@ -103,6 +103,19 @@ class LinkedList {
     }
     return -1;
   }
+
+  toString() {
+    const values = [];
+
+    let current = this._head;
+
+    for (let i = 0; i < this._size; i++) {
+      values.push(current.value);
+      current = current.nextNode;
+    }
+
+    return values.join(" -> ").concat(" -> null");
+  }
 }
 
 class Node {
@@ -112,16 +125,17 @@ class Node {
   }
 }
 
-const linkedList = new LinkedList();
-linkedList.append("B");
-linkedList.append("C");
-linkedList.append("D");
-linkedList.prepend("A");
-const size = linkedList.size;
-const popped = linkedList.pop();
-const head = linkedList.head;
-const tail = linkedList.tail;
-const at = linkedList.at(1);
-const contains = linkedList.contains("A");
-const index = linkedList.findIndex("d");
-const pass = "pass";
+// const linkedList = new LinkedList();
+// linkedList.append("B");
+// linkedList.append("C");
+// linkedList.append("D");
+// linkedList.prepend("A");
+// const size = linkedList.size;
+// const popped = linkedList.pop();
+// const head = linkedList.head;
+// const tail = linkedList.tail;
+// const at = linkedList.at(1);
+// const contains = linkedList.contains("A");
+// const index = linkedList.findIndex("C");
+// const string = linkedList.toString();
+// const pass = "pass";
