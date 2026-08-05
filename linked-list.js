@@ -19,6 +19,20 @@ class LinkedList {
     }
   }
 
+  prepend(value) {
+    const node = new Node(value);
+
+    if (!this.tail) {
+      this._tail = node;
+    }
+    if (!this.head) {
+      this._head = node;
+    } else {
+      node.nextNode = this._head;
+      this._head = node;
+    }
+  }
+
   get head() {
     return this._head;
   }
@@ -35,16 +49,17 @@ class Node {
   }
 }
 
-const linkedList = new LinkedList();
-const head = linkedList.head;
-const tail = linkedList.tail;
+// const linkedList = new LinkedList();
+// const head = linkedList.head;
+// const tail = linkedList.tail;
 
 // const linkedList = new LinkedList();
 // linkedList.append("A");
 // linkedList.append("B");
 // linkedList.append("C");
 // linkedList.append("D");
+// linkedList.prepend("E");
 // const head = linkedList.head;
 // const tail = linkedList.tail;
 
-const pass = "pass";
+// const pass = "pass";
