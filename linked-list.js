@@ -2,6 +2,7 @@ class LinkedList {
   constructor() {
     this._head;
     this._tail;
+    this._size = 0;
   }
 
   append(value) {
@@ -17,6 +18,8 @@ class LinkedList {
       this.tail.nextNode = node;
       this._tail = node;
     }
+
+    this._size++;
   }
 
   prepend(value) {
@@ -31,6 +34,12 @@ class LinkedList {
       node.nextNode = this._head;
       this._head = node;
     }
+
+    this._size++;
+  }
+
+  get size() {
+    return this._size;
   }
 
   get head() {
@@ -61,5 +70,6 @@ class Node {
 // linkedList.prepend("E");
 // const head = linkedList.head;
 // const tail = linkedList.tail;
+// const size = linkedList.size;
 
 // const pass = "pass";
