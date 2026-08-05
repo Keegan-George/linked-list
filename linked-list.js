@@ -50,6 +50,18 @@ class LinkedList {
     return this._tail;
   }
 
+  at(index) {
+    if (index < 0 || index > this._size) {
+      return undefined;
+    }
+
+    let current = this._head;
+    for (let i = 0; i < index; i++) {
+      current = current.nextNode;
+    }
+    return current.value;
+  }
+
   pop() {
     // save the value and nextNode properties of the head node
     const value = this._head.value;
@@ -84,4 +96,5 @@ class Node {
 // const popped = linkedList.pop();
 // const head = linkedList.head;
 // const tail = linkedList.tail;
+// const item = linkedList.at(-3);
 // const pass = "pass";
