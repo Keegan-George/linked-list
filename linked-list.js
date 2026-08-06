@@ -118,7 +118,10 @@ class LinkedList {
       current = current.nextNode;
     }
 
-    return values.join(" -> ").concat(" -> null");
+    return values
+      .map((x) => `( ${x} )`)
+      .join(" -> ")
+      .concat(" -> null");
   }
 }
 
