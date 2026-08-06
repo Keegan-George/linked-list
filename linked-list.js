@@ -8,14 +8,14 @@ class LinkedList {
   append(value) {
     const node = new Node(value);
 
-    if (!this.head) {
+    if (!this._head) {
       this._head = node;
     }
 
-    if (!this.tail) {
+    if (!this._tail) {
       this._tail = node;
     } else {
-      this.tail.nextNode = node;
+      this._tail.nextNode = node;
       this._tail = node;
     }
 
@@ -42,12 +42,12 @@ class LinkedList {
     return this._size;
   }
 
-  get head() {
-    return this._head;
+  head() {
+    return this._head.value;
   }
 
-  get tail() {
-    return this._tail;
+  tail() {
+    return this._tail.value;
   }
 
   at(index) {
@@ -132,14 +132,16 @@ class Node {
   }
 }
 
-// const linkedList = new LinkedList();
-// linkedList.append("B");
-// linkedList.append("C");
-// linkedList.append("D");
-// linkedList.prepend("A");
+export { LinkedList };
+
+const linkedList = new LinkedList();
+linkedList.append("B");
+linkedList.append("C");
+linkedList.append("D");
+linkedList.prepend("A");
 // const size = linkedList.size;
 // const popped = linkedList.pop();
-// const head = linkedList.head;
+// const value = linkedList.head();
 // const tail = linkedList.tail;
 // const at = linkedList.at(1);
 // const contains = linkedList.contains("A");
