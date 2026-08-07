@@ -133,18 +133,3 @@ class Node {
 }
 
 export { LinkedList };
-
-const linkedList = new LinkedList();
-linkedList.append("B");
-linkedList.append("C");
-linkedList.append("D");
-linkedList.prepend("A");
-// const size = linkedList.size;
-// const popped = linkedList.pop();
-// const value = linkedList.head();
-// const tail = linkedList.tail;
-// const at = linkedList.at(1);
-// const contains = linkedList.contains("A");
-// const index = linkedList.findIndex("C");
-// const string = linkedList.toString();
-// const pass = "pass";
