@@ -10,6 +10,10 @@ beforeEach(() => {
   list.append("D");
 });
 
+test("Can display a string representation of the list", () => {
+  expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> null");
+});
+
 test("Can append a node to the end of the list", () => {
   list.append("E");
   expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( E ) -> null");
@@ -71,6 +75,11 @@ test("Pop returns the value of the first node", () => {
 test("Pop removes the first node from the list ", () => {
   list.pop();
   expect(list.toString()).toBe("( C ) -> ( D ) -> null");
+});
+
+test("Pop decreases the size of the list", () => {
+  list.pop();
+  expect(list.size).toBe(2);
 });
 
 test("Can find value at the start of the list", () => {
