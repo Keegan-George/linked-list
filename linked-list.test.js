@@ -61,27 +61,27 @@ describe("Positive scenarios", () => {
     expect(list.tail()).toBe("E");
   });
 
-  test("Get value at the start of a list", () => {
+  test("Get value at the first index", () => {
     expect(list.at(0)).toBe("B");
   });
 
-  test("Get value in the middle of a list", () => {
+  test("Get value at middle index", () => {
     expect(list.at(1)).toBe("C");
   });
 
-  test("Get value at the end of a list", () => {
+  test("Get value last index", () => {
     expect(list.at(2)).toBe("D");
   });
 
-  test("Returns undefined if the index is equals the size of the list", () => {
+  test("Undefined if index equals size of the list", () => {
     expect(list.at(3)).toBeUndefined();
   });
 
-  test("Returns undefined if the index is greater than the size of the list", () => {
+  test("Undefined if index is greater than the size of the list", () => {
     expect(list.at(4)).toBeUndefined();
   });
 
-  test("Returns undefined if the index is negative", () => {
+  test("Undefined if index is negative", () => {
     expect(list.at(-1)).toBeUndefined();
   });
 
@@ -99,40 +99,40 @@ describe("Positive scenarios", () => {
     expect(list.size).toBe(2);
   });
 
-  test("Can find value at the start of the list", () => {
+  test("True if value found at start of list", () => {
     expect(list.contains("B")).toBe(true);
   });
 
-  test("Can find value in the middle of the list", () => {
+  test("True if value found in middle of list", () => {
     expect(list.contains("C")).toBe(true);
   });
 
-  test("Can find value at the end of the list", () => {
+  test("True if value found at end of list", () => {
     expect(list.contains("D")).toBe(true);
   });
 
-  test("return false for value not in the list", () => {
+  test("False for value not in list", () => {
     expect(list.contains("A")).toBe(false);
   });
 
-  test("Can get index of value at the start of the list", () => {
+  test("Returns index of value at the start of list", () => {
     expect(list.findIndex("B")).toBe(0);
   });
 
-  test("Can get index of value in the middle of the list", () => {
+  test("Returns index of value in middle of list", () => {
     expect(list.findIndex("C")).toBe(1);
   });
 
-  test("Can get index of value at the end of the list", () => {
+  test("Returns  index of value at end of list", () => {
     expect(list.findIndex("D")).toBe(2);
   });
 
-  test("Returns index of the first match in the list", () => {
+  test("Returns index of first match in list", () => {
     list.append("D");
     expect(list.findIndex("D")).toBe(2);
   });
 
-  test("Index is -1 if the value is not in the list", () => {
+  test("Index is -1 if value is not in the list", () => {
     expect(list.findIndex("Z")).toBe(-1);
   });
 });
