@@ -73,6 +73,18 @@ describe("Positive scenarios", () => {
     expect(list.at(2)).toBe("D");
   });
 
+  test("Returns undefined if the index is equals the size of the list", () => {
+    expect(list.at(3)).toBeUndefined();
+  });
+
+  test("Returns undefined if the index is greater than the size of the list", () => {
+    expect(list.at(4)).toBeUndefined();
+  });
+
+  test("Returns undefined if the index is negative", () => {
+    expect(list.at(-1)).toBeUndefined();
+  });
+
   test("Pop returns the value of the first node", () => {
     expect(list.pop()).toBe("B");
   });
@@ -115,7 +127,12 @@ describe("Positive scenarios", () => {
     expect(list.findIndex("D")).toBe(2);
   });
 
-  test("Return -1 if the value is not in the list", () => {
+  test("Returns index of the first match in the list", () => {
+    list.append("D");
+    expect(list.findIndex("D")).toBe(2);
+  });
+
+  test("Index is -1 if the value is not in the list", () => {
     expect(list.findIndex("Z")).toBe(-1);
   });
 });

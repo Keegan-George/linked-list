@@ -57,7 +57,7 @@ class LinkedList {
   }
 
   at(index) {
-    if (!this._size || index < 0 || index > this._size) {
+    if (!this._size || index < 0 || index >= this._size) {
       return undefined;
     }
 
