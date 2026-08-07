@@ -56,7 +56,7 @@ test("Get value at the start of a list", () => {
   expect(list.at(0)).toBe("B");
 });
 
-test("Get value at the middle of a list", () => {
+test("Get value in the middle of a list", () => {
   expect(list.at(1)).toBe("C");
 });
 
@@ -89,8 +89,25 @@ test("return false for value not in the list", () => {
   expect(list.contains("A")).toBe(false);
 });
 
+test("Can get index of value at the start of the list", () => {
+  expect(list.findIndex("B")).toBe(0);
+});
+
+test("Can get index of value in the middle of the list", () => {
+  expect(list.findIndex("C")).toBe(1);
+});
+
+test("Can get index of value at the end of the list", () => {
+  expect(list.findIndex("D")).toBe(2);
+});
+
+test("Return -1 if the value is not in the list", () => {
+  expect(list.findIndex("Z")).toBe(-1);
+});
+
 //negatives tests
 //if list is empty head() should return undefined
 //if list is empty tail() should return undefined
 //at should return undefined if there is no node at that index
 //pop on an empty list should return undefined
+//toString should return "" for empty list
