@@ -43,15 +43,21 @@ class LinkedList {
   }
 
   head() {
+    if (!this._size) {
+      return undefined;
+    }
     return this._head.value;
   }
 
   tail() {
+    if (!this._size) {
+      return undefined;
+    }
     return this._tail.value;
   }
 
   at(index) {
-    if (index < 0 || index > this._size) {
+    if (!this._size || index < 0 || index > this._size) {
       return undefined;
     }
 
@@ -63,6 +69,10 @@ class LinkedList {
   }
 
   pop() {
+    if (!this._size) {
+      return undefined;
+    }
+
     // save the value and nextNode properties of the head node
     const value = this._head.value;
     const next_node = this._head.nextNode;
