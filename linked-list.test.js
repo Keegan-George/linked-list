@@ -73,7 +73,24 @@ test("Pop removes the first node from the list ", () => {
   expect(list.toString()).toBe("( C ) -> ( D ) -> null");
 });
 
+test("Can find value at the start of the list", () => {
+  expect(list.contains("B")).toBe(true);
+});
+
+test("Can find value in the middle of the list", () => {
+  expect(list.contains("C")).toBe(true);
+});
+
+test("Can find value at the end of the list", () => {
+  expect(list.contains("D")).toBe(true);
+});
+
+test("return false for value not in the list", () => {
+  expect(list.contains("A")).toBe(false);
+});
+
 //negatives tests
 //if list is empty head() should return undefined
 //if list is empty tail() should return undefined
 //at should return undefined if there is no node at that index
+//pop on an empty list should return undefined
