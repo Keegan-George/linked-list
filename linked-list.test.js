@@ -135,6 +135,21 @@ describe("Positive scenarios", () => {
   test("Index is -1 if value is not in the list", () => {
     expect(list.findIndex("Z")).toBe(-1);
   });
+
+  test("Remove the node at the start of the list", () => {
+    list.removeAt(0);
+    expect(list.toString()).toBe("( C ) -> ( D ) -> null");
+  });
+
+  test("Remove a node from the middle of the list", () => {
+    list.removeAt(1);
+    expect(list.toString()).toBe("( B ) -> ( D ) -> null");
+  });
+
+  test("Remove the node at the end of the list", () => {
+    list.removeAt(2);
+    expect(list.toString()).toBe("( B ) -> ( C ) -> null");
+  });
 });
 
 describe("Empty list scenarios", () => {

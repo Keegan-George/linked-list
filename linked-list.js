@@ -133,6 +133,35 @@ class LinkedList {
       .join(" -> ")
       .concat(" -> null");
   }
+
+  removeAt(index) {
+    if (index === 0) {
+      this.pop();
+      return;
+    }
+
+    //get the node prior the one to be removed
+    let previous = this._head;
+
+    for (let i = 0; i < index - 1; i++) {
+      previous = previous.nextNode;
+    }
+
+    //node to be removed
+    let remove = previous.nextNode;
+
+    //node that follows the one to be removed
+    let next = remove.nextNode;
+
+    //update the previous node's nextNode property
+    previous.nextNode = next;
+
+    //set properties of the removal node to null
+    remove.value = null;
+    remove.nextNode = null;
+
+    this._size--;
+  }
 }
 
 class Node {
@@ -141,5 +170,14 @@ class Node {
     this.nextNode = null;
   }
 }
+
+const list = new LinkedList();
+list.append("A");
+list.append("B");
+list.append("C");
+
+list.removeAt(2);
+
+list.toString();
 
 export { LinkedList };
