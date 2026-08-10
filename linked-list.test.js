@@ -150,6 +150,29 @@ describe("Positive scenarios", () => {
     list.removeAt(2);
     expect(list.toString()).toBe("( B ) -> ( C ) -> null");
   });
+
+  test("Removing a node by its index decreases the size of the list", () => {
+    list.removeAt(2);
+    expect(list.size).toBe(2);
+  });
+
+  test("Throws range error if removeAt index is negative", () => {
+    expect(() => {
+      list.removeAt(-1);
+    }).toThrow(RangeError);
+  });
+
+  test("Throws range error if removeAt index is equal to list size", () => {
+    expect(() => {
+      list.removeAt(3);
+    }).toThrow(RangeError);
+  });
+
+  test("Throws range error if removeAt index is greater than list size", () => {
+    expect(() => {
+      list.removeAt(4);
+    }).toThrow(RangeError);
+  });
 });
 
 describe("Empty list scenarios", () => {

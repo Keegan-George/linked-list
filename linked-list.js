@@ -135,6 +135,9 @@ class LinkedList {
   }
 
   removeAt(index) {
+    if (index < 0 || index >= this._size) {
+      throw new RangeError();
+    }
     if (index === 0) {
       this.pop();
       return;
@@ -171,13 +174,11 @@ class Node {
   }
 }
 
-const list = new LinkedList();
-list.append("A");
-list.append("B");
-list.append("C");
+// const list = new LinkedList();
+// list.append("A");
+// list.append("B");
+// list.append("C");
 
-list.removeAt(2);
-
-list.toString();
+// list.removeAt(-1);
 
 export { LinkedList };
