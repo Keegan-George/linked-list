@@ -142,6 +142,11 @@ describe("Positive scenarios", () => {
     test("False for value not in list", () => {
       expect(list.contains("A")).toBe(false);
     });
+
+    test("True if value is duplicated", () => {
+      list.append("D");
+      expect(list.contains("D")).toBe(true);
+    });
   });
 
   describe("findIndex() scenarios", () => {
