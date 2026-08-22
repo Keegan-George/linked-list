@@ -317,3 +317,12 @@ describe("Empty list scenarios", () => {
     }).toThrow(RangeError);
   });
 });
+
+describe("Performance tests", () => {
+  test("Create a large list", () => {
+    for (let i = 0; i < 1000; i++) {
+      list.append(i);
+    }
+    expect(list.size).toBe(1000);
+  });
+});
