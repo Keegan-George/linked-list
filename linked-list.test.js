@@ -105,6 +105,14 @@ describe("Positive scenarios", () => {
       list.pop();
       expect(list.size).toBe(2);
     });
+
+    test("Pop repeatedly until the list is empty", () => {
+      list.pop();
+      list.pop();
+      list.pop();
+      expect(list.size).toBe(0);
+      expect(list.pop()).toBeUndefined();
+    });
   });
 
   describe("contains() scenarios", () => {
@@ -276,7 +284,7 @@ describe("Empty list scenarios", () => {
 
   test("For empty list insertAt throws RangeError", () => {
     expect(() => {
-      list.insertAt(0);
+      list.insertAt(0, "A");
     }).toThrow(RangeError);
   });
 });
