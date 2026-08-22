@@ -135,7 +135,7 @@ class LinkedList {
   }
 
   insertAt(index, ...values) {
-    if (index < 0 || index > this._size) {
+    if (index < 0 || index > this._size || this._size === 0) {
       throw new RangeError();
     }
 
