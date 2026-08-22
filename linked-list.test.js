@@ -43,6 +43,13 @@ describe("Positive scenarios", () => {
       list.prepend("A");
       expect(list.size).toBe(4);
     });
+
+    test("Append non-string values", () => {
+      const list = new LinkedList();
+      list.append(123);
+      list.append([1, 2, 3]);
+      expect(list.toString()).toBe("( 123 ) -> ( 1,2,3 ) -> null");
+    });
   });
 
   describe("head() and tail() scenarios", () => {
@@ -268,6 +275,13 @@ describe("Empty list scenarios", () => {
 
   test("For empty list pop returns undefined", () => {
     expect(list.pop()).toBeUndefined();
+  });
+
+  test("Size is 0 after repeated pops", () => {
+    list.pop();
+    list.pop();
+    list.pop();
+    expect(list.size).toBe(0);
   });
 
   test("For empty list contains returns false", () => {

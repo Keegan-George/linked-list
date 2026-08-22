@@ -234,12 +234,4 @@ class Node {
   }
 }
 
-const list = new LinkedList();
-list.append("A");
-list.append("B");
-list.append("C");
-
-list.insertAt(3, "X", "Y", "Z");
-const result = list.toString();
-
 export { LinkedList };
