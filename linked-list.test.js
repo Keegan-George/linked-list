@@ -245,6 +245,12 @@ describe("Positive scenarios", () => {
       }).toThrow(RangeError);
     });
   });
+
+  test("To string on a single element", () => {
+    const list = new LinkedList();
+    list.append("A");
+    expect(list.toString()).toBe("( A ) -> null");
+  });
 });
 
 describe("Empty list scenarios", () => {
