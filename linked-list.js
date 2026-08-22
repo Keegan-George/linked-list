@@ -134,6 +134,64 @@ class LinkedList {
       .concat(" -> null");
   }
 
+  insertAt(index, ...values) {
+    if (index < 0 || index >= this._size) {
+      throw new RangeError();
+    }
+
+    //get the node prior to the specified
+    let preIndexNode = this._head;
+
+    for (let i = 0; i < index - 1; i++) {
+      preIndexNode = preIndexNode.nextNode;
+    }
+
+    const postIndexNode = preIndexNode.nextNode;
+
+    const nodeSequenceObject = this.#createNodeSequence(values);
+
+    if (index === 0) {
+      nodeSequenceObject.lastNode.nextNode = preIndexNode;
+      this._head = nodeSequenceObject.firstNode;
+    } else {
+      preIndexNode.nextNode = nodeSequenceObject.firstNode;
+      nodeSequenceObject.lastNode.nextNode = postIndexNode;
+    }
+
+    this._size += nodeSequenceObject.size;
+  }
+
+  #createNodeSequence(values) {
+    //create nodes from values
+    let first;
+    let last;
+    let current;
+    let count = 0;
+
+    for (let i = 0; i < values.length; i++) {
+      let node = new Node(values[i]);
+
+      if (i === 0) {
+        current = node;
+        first = current;
+      } else {
+        current.nextNode = node;
+        current = node;
+      }
+      if (i === values.length - 1) {
+        last = current;
+      }
+
+      count++;
+    }
+
+    return {
+      firstNode: first,
+      lastNode: last,
+      size: count,
+    };
+  }
+
   removeAt(index) {
     if (index < 0 || index >= this._size) {
       throw new RangeError();
@@ -179,6 +237,7 @@ class Node {
 // list.append("B");
 // list.append("C");
 
-// list.removeAt(-1);
+// list.insertAt(0, "X", "Y", "Z");
+// const result = list.toString();
 
 export { LinkedList };
