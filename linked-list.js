@@ -135,7 +135,7 @@ class LinkedList {
   }
 
   insertAt(index, ...values) {
-    if (index < 0 || index >= this._size) {
+    if (index < 0 || index > this._size) {
       throw new RangeError();
     }
 
@@ -153,6 +153,8 @@ class LinkedList {
     if (index === 0) {
       nodeSequenceObject.lastNode.nextNode = preIndexNode;
       this._head = nodeSequenceObject.firstNode;
+    } else if (index === this._size) {
+      preIndexNode.nextNode = nodeSequenceObject.firstNode;
     } else {
       preIndexNode.nextNode = nodeSequenceObject.firstNode;
       nodeSequenceObject.lastNode.nextNode = postIndexNode;
@@ -232,12 +234,12 @@ class Node {
   }
 }
 
-// const list = new LinkedList();
-// list.append("A");
-// list.append("B");
-// list.append("C");
+const list = new LinkedList();
+list.append("A");
+list.append("B");
+list.append("C");
 
-// list.insertAt(0, "X", "Y", "Z");
-// const result = list.toString();
+list.insertAt(3, "X", "Y", "Z");
+const result = list.toString();
 
 export { LinkedList };
