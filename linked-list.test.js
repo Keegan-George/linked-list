@@ -187,6 +187,50 @@ describe("Positive scenarios", () => {
       }).toThrow(RangeError);
     });
   });
+
+  describe("insertAt() scenarios", () => {
+    test("Insert a before the first node", () => {
+      list.insertAt(0, "X");
+      expect(list.toString()).toBe("( X ) -> ( B ) -> ( C ) -> ( D ) -> null");
+    });
+
+    test("Insert a before the last node", () => {
+      list.insertAt(2, "X");
+      expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
+    });
+
+    test("Insert several nodes before the first node", () => {
+      list.insertAt(0, "X", "Y");
+      expect(list.toString()).toBe(
+        "( X ) -> ( Y ) -> ( B ) -> ( C ) -> ( D ) -> null",
+      );
+    });
+
+    test("Insert sevearl nodes before the last node", () => {
+      list.insertAt(2, "X", "Y");
+      expect(list.toString()).toBe(
+        "( B ) -> ( C ) -> ( X ) -> ( Y ) -> ( D ) -> null",
+      );
+    });
+
+    test("Throws range error if insertAt index is negative", () => {
+      expect(() => {
+        list.removeAt(-1);
+      }).toThrow(RangeError);
+    });
+
+    test("Throws range error if insertAt index is equal to list size", () => {
+      expect(() => {
+        list.removeAt(3);
+      }).toThrow(RangeError);
+    });
+
+    test("Throws range error if insertAt index is greater than list size", () => {
+      expect(() => {
+        list.removeAt(4);
+      }).toThrow(RangeError);
+    });
+  });
 });
 
 describe("Empty list scenarios", () => {
