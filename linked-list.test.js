@@ -73,7 +73,7 @@ describe("Positive scenarios", () => {
   });
 
   describe("at() scenarios", () => {
-    test("Get value at the first index", () => {
+    test("Get value at first index", () => {
       expect(list.at(0)).toBe("B");
     });
 
@@ -81,7 +81,7 @@ describe("Positive scenarios", () => {
       expect(list.at(1)).toBe("C");
     });
 
-    test("Get value last index", () => {
+    test("Get value at last index", () => {
       expect(list.at(2)).toBe("D");
     });
 
@@ -89,7 +89,7 @@ describe("Positive scenarios", () => {
       expect(list.at(3)).toBeUndefined();
     });
 
-    test("Undefined if index is greater than the size of the list", () => {
+    test("Undefined if index is greater than size of the list", () => {
       expect(list.at(4)).toBeUndefined();
     });
 
@@ -99,21 +99,21 @@ describe("Positive scenarios", () => {
   });
 
   describe("pop() scenarios", () => {
-    test("Pop returns the value of the head node", () => {
+    test("Pop returns value of head node", () => {
       expect(list.pop()).toBe("B");
     });
 
-    test("Pop removes the head node from the list ", () => {
+    test("Pop removes head node from the list ", () => {
       list.pop();
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
     });
 
-    test("Pop decreases the size of the list", () => {
+    test("Pop decreases size of the list", () => {
       list.pop();
       expect(list.size).toBe(2);
     });
 
-    test("Pop repeatedly until the list is empty", () => {
+    test("Pop repeatedly until list is empty", () => {
       list.pop();
       list.pop();
       list.pop();
@@ -146,7 +146,7 @@ describe("Positive scenarios", () => {
   });
 
   describe("findIndex() scenarios", () => {
-    test("Returns index of value at the start of list", () => {
+    test("Returns index of value at start of list", () => {
       expect(list.findIndex("B")).toBe(0);
     });
 
@@ -163,28 +163,28 @@ describe("Positive scenarios", () => {
       expect(list.findIndex("D")).toBe(2);
     });
 
-    test("Index is -1 if value is not in the list", () => {
+    test("Index is -1 if value is not in list", () => {
       expect(list.findIndex("Z")).toBe(-1);
     });
   });
 
   describe("removeAt() scenarios", () => {
-    test("Remove the node at the start of the list", () => {
+    test("Remove node at start of list", () => {
       list.removeAt(0);
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
     });
 
-    test("Remove a node from the middle of the list", () => {
+    test("Remove node from the middle of list", () => {
       list.removeAt(1);
       expect(list.toString()).toBe("( B ) -> ( D ) -> null");
     });
 
-    test("Remove the node at the end of the list", () => {
+    test("Remove node at the end of list", () => {
       list.removeAt(2);
       expect(list.toString()).toBe("( B ) -> ( C ) -> null");
     });
 
-    test("Removing a node by its index decreases the size of the list", () => {
+    test("Removing a node by its index decreases size of list", () => {
       list.removeAt(2);
       expect(list.size).toBe(2);
     });
@@ -209,36 +209,36 @@ describe("Positive scenarios", () => {
   });
 
   describe("insertAt() scenarios", () => {
-    test("Insert a node before the head node", () => {
+    test("Insert node before head node", () => {
       list.insertAt(0, "X");
       expect(list.toString()).toBe("( X ) -> ( B ) -> ( C ) -> ( D ) -> null");
     });
 
-    test("Insert a node before the tail node", () => {
+    test("Insert node before tail node", () => {
       list.insertAt(2, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
     });
 
-    test("Insert a node at the end", () => {
+    test("Insert node after tail node", () => {
       list.insertAt(3, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
     });
 
-    test("Insert several nodes before the head node", () => {
+    test("Insert several nodes before head node", () => {
       list.insertAt(0, "X", "Y");
       expect(list.toString()).toBe(
         "( X ) -> ( Y ) -> ( B ) -> ( C ) -> ( D ) -> null",
       );
     });
 
-    test("Insert several nodes before the tail node", () => {
+    test("Insert several nodes before tail node", () => {
       list.insertAt(2, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( X ) -> ( Y ) -> ( D ) -> null",
       );
     });
 
-    test("Insert several nodes at the end", () => {
+    test("Insert several nodes after tail node", () => {
       list.insertAt(3, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( D ) -> ( X ) -> ( Y ) -> null",
@@ -258,7 +258,7 @@ describe("Positive scenarios", () => {
     });
   });
 
-  test("To string on a single element", () => {
+  test("Call toString on a single element", () => {
     const list = new LinkedList();
     list.append("A");
     expect(list.toString()).toBe("( A ) -> null");
