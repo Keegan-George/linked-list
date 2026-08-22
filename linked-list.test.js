@@ -47,8 +47,12 @@ describe("Positive scenarios", () => {
     test("Append non-string values", () => {
       const list = new LinkedList();
       list.append(123);
+      list.append(true);
       list.append([1, 2, 3]);
-      expect(list.toString()).toBe("( 123 ) -> ( 1,2,3 ) -> null");
+      list.append(false);
+      expect(list.toString()).toBe(
+        "( 123 ) -> ( true ) -> ( 1,2,3 ) -> ( false ) -> null",
+      );
     });
   });
 
