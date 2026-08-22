@@ -189,14 +189,19 @@ describe("Positive scenarios", () => {
   });
 
   describe("insertAt() scenarios", () => {
-    test("Insert a before the first node", () => {
+    test("Insert a node before the first node", () => {
       list.insertAt(0, "X");
       expect(list.toString()).toBe("( X ) -> ( B ) -> ( C ) -> ( D ) -> null");
     });
 
-    test("Insert a before the last node", () => {
+    test("Insert a node before the last node", () => {
       list.insertAt(2, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
+    });
+
+    test("Insert a node at the end", () => {
+      list.insertAt(3, "X");
+      expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
     });
 
     test("Insert several nodes before the first node", () => {
@@ -206,22 +211,23 @@ describe("Positive scenarios", () => {
       );
     });
 
-    test("Insert sevearl nodes before the last node", () => {
+    test("Insert severanl nodes before the last node", () => {
       list.insertAt(2, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( X ) -> ( Y ) -> ( D ) -> null",
       );
     });
 
+    test("Insert severanl nodes at the end", () => {
+      list.insertAt(3, "X", "Y");
+      expect(list.toString()).toBe(
+        "( B ) -> ( C ) -> ( D ) -> ( X ) -> ( Y ) -> null",
+      );
+    });
+
     test("Throws range error if insertAt index is negative", () => {
       expect(() => {
         list.insertAt(-1);
-      }).toThrow(RangeError);
-    });
-
-    test("Throws range error if insertAt index is equal to list size", () => {
-      expect(() => {
-        list.insertAt(3);
       }).toThrow(RangeError);
     });
 
@@ -260,5 +266,17 @@ describe("Empty list scenarios", () => {
 
   test("For empty list toString returns an empty string", () => {
     expect(list.toString()).toBe("");
+  });
+
+  test("For empty list removeAt throws RangeError", () => {
+    expect(() => {
+      list.removeAt(0);
+    }).toThrow(RangeError);
+  });
+
+  test("For empty list insertAt throws RangeError", () => {
+    expect(() => {
+      list.insertAt(0);
+    }).toThrow(RangeError);
   });
 });
