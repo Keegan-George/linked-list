@@ -215,19 +215,19 @@ describe("Positive scenarios", () => {
 
     test("Throws range error if insertAt index is negative", () => {
       expect(() => {
-        list.removeAt(-1);
+        list.insertAt(-1);
       }).toThrow(RangeError);
     });
 
     test("Throws range error if insertAt index is equal to list size", () => {
       expect(() => {
-        list.removeAt(3);
+        list.insertAt(3);
       }).toThrow(RangeError);
     });
 
     test("Throws range error if insertAt index is greater than list size", () => {
       expect(() => {
-        list.removeAt(4);
+        list.insertAt(4);
       }).toThrow(RangeError);
     });
   });
