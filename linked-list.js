@@ -25,10 +25,10 @@ class LinkedList {
   prepend(value) {
     const node = new Node(value);
 
-    if (!this.tail) {
+    if (!this._tail) {
       this._tail = node;
     }
-    if (!this.head) {
+    if (!this._head) {
       this._head = node;
     } else {
       node.nextNode = this._head;
