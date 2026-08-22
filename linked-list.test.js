@@ -1,5 +1,5 @@
 import { LinkedList } from "./linked-list.js";
-import { test, expect, describe, beforeEach, afterAll } from "@jest/globals";
+import { test, expect, describe, beforeEach } from "@jest/globals";
 
 let list;
 
@@ -9,10 +9,6 @@ describe("Positive scenarios", () => {
     list.append("B");
     list.append("C");
     list.append("D");
-  });
-
-  afterAll(() => {
-    list = new LinkedList();
   });
 
   describe("append(), prepend(), and size scenarios", () => {
@@ -270,6 +266,10 @@ describe("Positive scenarios", () => {
 });
 
 describe("Empty list scenarios", () => {
+  beforeEach(() => {
+    list = new LinkedList();
+  });
+
   test("For empty list head returns undefined", () => {
     expect(list.head()).toBeUndefined();
   });
