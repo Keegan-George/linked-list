@@ -103,11 +103,11 @@ describe("Positive scenarios", () => {
   });
 
   describe("pop() scenarios", () => {
-    test("Pop returns the value of the first node", () => {
+    test("Pop returns the value of the head node", () => {
       expect(list.pop()).toBe("B");
     });
 
-    test("Pop removes the first node from the list ", () => {
+    test("Pop removes the head node from the list ", () => {
       list.pop();
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
     });
@@ -213,36 +213,36 @@ describe("Positive scenarios", () => {
   });
 
   describe("insertAt() scenarios", () => {
-    test("Insert a node before the first node", () => {
+    test("Insert a node before the head node", () => {
       list.insertAt(0, "X");
       expect(list.toString()).toBe("( X ) -> ( B ) -> ( C ) -> ( D ) -> null");
     });
 
-    test("Insert a node before the last node", () => {
+    test("Insert a node before the tail node", () => {
       list.insertAt(2, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
     });
 
-    test("Insert a node at the end", () => {
+    test("Insert a node after the tail node", () => {
       list.insertAt(3, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
     });
 
-    test("Insert several nodes before the first node", () => {
+    test("Insert several nodes before the head node", () => {
       list.insertAt(0, "X", "Y");
       expect(list.toString()).toBe(
         "( X ) -> ( Y ) -> ( B ) -> ( C ) -> ( D ) -> null",
       );
     });
 
-    test("Insert severanl nodes before the last node", () => {
+    test("Insert several nodes before the tail node", () => {
       list.insertAt(2, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( X ) -> ( Y ) -> ( D ) -> null",
       );
     });
 
-    test("Insert severanl nodes at the end", () => {
+    test("Insert several nodes after the tail node", () => {
       list.insertAt(3, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( D ) -> ( X ) -> ( Y ) -> null",
