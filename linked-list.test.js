@@ -219,7 +219,7 @@ describe("Positive scenarios", () => {
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
     });
 
-    test("Insert a node after the tail node", () => {
+    test("Insert a node at the end", () => {
       list.insertAt(3, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
     });
@@ -238,7 +238,7 @@ describe("Positive scenarios", () => {
       );
     });
 
-    test("Insert several nodes after the tail node", () => {
+    test("Insert several nodes at the end", () => {
       list.insertAt(3, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( D ) -> ( X ) -> ( Y ) -> null",
@@ -319,6 +319,10 @@ describe("Empty list scenarios", () => {
 });
 
 describe("Performance tests", () => {
+  beforeEach(() => {
+    list = new LinkedList();
+  });
+
   test("Create a large list", () => {
     for (let i = 0; i < 1000; i++) {
       list.append(i);
