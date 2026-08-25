@@ -204,50 +204,74 @@ describe("Positive scenarios", () => {
 
   describe("insertAt() scenarios", () => {
     test("Insert node before head node", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.insertAt(0, "X");
       expect(list.toString()).toBe("( X ) -> ( B ) -> ( C ) -> ( D ) -> null");
+      expect(list.head).toBe("X");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(4);
     });
 
     test("Insert node before tail node", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.insertAt(2, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(4);
     });
 
     test("Insert node after tail node", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.insertAt(3, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(4);
     });
 
     test("Insert several nodes before head node", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.insertAt(0, "X", "Y");
       expect(list.toString()).toBe(
         "( X ) -> ( Y ) -> ( B ) -> ( C ) -> ( D ) -> null",
       );
+      expect(list.head).toBe("X");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(5);
     });
 
     test("Insert several nodes before tail node", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.insertAt(2, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( X ) -> ( Y ) -> ( D ) -> null",
       );
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(5);
     });
 
     test("Insert several nodes after tail node", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.insertAt(3, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( D ) -> ( X ) -> ( Y ) -> null",
       );
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("Y");
       expect(list.size).toBe(5);
     });
 
