@@ -124,7 +124,7 @@ class LinkedList {
       throw new RangeError();
     }
 
-    //the node that will come before the inserted ones
+    //node before the ones to be inserted
     let before = this._head;
 
     for (let i = 0; i < index - 1; i++) {
@@ -138,6 +138,7 @@ class LinkedList {
       this._head = sequence.firstNode;
     } else if (index === this._size) {
       before.nextNode = sequence.firstNode;
+      this._tail = sequence.lastNode;
     } else {
       sequence.lastNode.nextNode = before.nextNode;
       before.nextNode = sequence.firstNode;
@@ -216,11 +217,5 @@ class Node {
     this.nextNode = null;
   }
 }
-
-const list = new LinkedList();
-list.append("B");
-list.append("C");
-list.append("D");
-list.removeAt(2);
 
 export { LinkedList };

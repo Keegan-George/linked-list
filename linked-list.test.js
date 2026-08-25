@@ -232,7 +232,7 @@ describe("Positive scenarios", () => {
       list.insertAt(3, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
       expect(list.head).toBe("B");
-      expect(list.tail).toBe("D");
+      expect(list.tail).toBe("X");
       expect(list.size).toBe(4);
     });
 
