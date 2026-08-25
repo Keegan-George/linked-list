@@ -42,18 +42,12 @@ class LinkedList {
     return this._size;
   }
 
-  head() {
-    if (!this._size) {
-      return undefined;
-    }
-    return this._head.value;
+  get head() {
+    return this._head?.value;
   }
 
   tail() {
-    if (!this._size) {
-      return undefined;
-    }
-    return this._tail.value;
+    return this._tail?.value;
   }
 
   at(index) {

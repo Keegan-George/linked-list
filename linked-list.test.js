@@ -54,12 +54,12 @@ describe("Positive scenarios", () => {
 
   describe("head() and tail() scenarios", () => {
     test("Can get the value of the head node in the list,", () => {
-      expect(list.head()).toBe("B");
+      expect(list.head).toBe("B");
     });
 
     test("Prepended node becomes the new head node,", () => {
       list.prepend("A");
-      expect(list.head()).toBe("A");
+      expect(list.head).toBe("A");
     });
 
     test("Can get the value of the tail node in the list,", () => {
@@ -271,7 +271,7 @@ describe("Empty list scenarios", () => {
   });
 
   test("For empty list head returns undefined", () => {
-    expect(list.head()).toBeUndefined();
+    expect(list.head).toBeUndefined();
   });
 
   test("For empty list tail returns undefined", () => {
