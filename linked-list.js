@@ -133,6 +133,13 @@ class LinkedList {
 
     const sequence = this.#createNodeSequence(values);
 
+    if (this._size === 0) {
+      this._head = sequence.firstNode;
+      this._tail = sequence.lastNode;
+      this._size = sequence.size;
+      return;
+    }
+
     if (index === 0) {
       sequence.lastNode.nextNode = before;
       this._head = sequence.firstNode;
