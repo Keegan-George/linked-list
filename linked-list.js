@@ -205,10 +205,6 @@ class LinkedList {
     //update the previous node's nextNode property
     previous.nextNode = next;
 
-    //set properties of the removal node to null
-    remove.value = null;
-    remove.nextNode = null;
-
     this._size--;
   }
 }
