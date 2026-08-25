@@ -22,11 +22,9 @@ class LinkedList {
   prepend(value) {
     const node = new Node(value);
 
-    if (!this._tail) {
-      this._tail = node;
-    }
     if (!this._head) {
       this._head = node;
+      this._tail = node;
     } else {
       node.nextNode = this._head;
       this._head = node;
@@ -146,6 +144,34 @@ class LinkedList {
     this._size += nodeSequenceObject.size;
   }
 
+  removeAt(index) {
+    if (index < 0 || index >= this._size) {
+      throw new RangeError();
+    }
+    if (index === 0) {
+      this.pop();
+      return;
+    }
+
+    //get the node prior the one to be removed
+    let previous = this._head;
+
+    for (let i = 0; i < index - 1; i++) {
+      previous = previous.nextNode;
+    }
+
+    //node to be removed
+    let remove = previous.nextNode;
+
+    //node that follows the one to be removed
+    let next = remove.nextNode;
+
+    //update the previous node's nextNode property
+    previous.nextNode = next;
+
+    this._size--;
+  }
+
   #createNodeSequence(values) {
     //create nodes from values
     let first;
@@ -175,34 +201,6 @@ class LinkedList {
       lastNode: last,
       size: count,
     };
-  }
-
-  removeAt(index) {
-    if (index < 0 || index >= this._size) {
-      throw new RangeError();
-    }
-    if (index === 0) {
-      this.pop();
-      return;
-    }
-
-    //get the node prior the one to be removed
-    let previous = this._head;
-
-    for (let i = 0; i < index - 1; i++) {
-      previous = previous.nextNode;
-    }
-
-    //node to be removed
-    let remove = previous.nextNode;
-
-    //node that follows the one to be removed
-    let next = remove.nextNode;
-
-    //update the previous node's nextNode property
-    previous.nextNode = next;
-
-    this._size--;
   }
 }
 
