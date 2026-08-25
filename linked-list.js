@@ -183,33 +183,24 @@ class LinkedList {
   }
 
   #createNodeSequence(values) {
-    //create nodes from values
     let first;
     let last;
-    let current;
-    let count = 0;
 
-    for (let i = 0; i < values.length; i++) {
-      let node = new Node(values[i]);
+    for (const value of values) {
+      let node = new Node(value);
 
-      if (i === 0) {
-        current = node;
-        first = current;
+      if (!first) {
+        first = node;
       } else {
-        current.nextNode = node;
-        current = node;
+        last.nextNode = node;
       }
-      if (i === values.length - 1) {
-        last = current;
-      }
-
-      count++;
+      last = node;
     }
 
     return {
       firstNode: first,
       lastNode: last,
-      size: count,
+      size: values.length,
     };
   }
 }
