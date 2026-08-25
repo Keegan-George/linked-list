@@ -155,21 +155,25 @@ class LinkedList {
       return;
     }
 
-    //get the node prior the one to be removed
-    let previous = this._head;
+    //get the node before the one to be removed
+    let before = this._head;
 
     for (let i = 0; i < index - 1; i++) {
-      previous = previous.nextNode;
+      before = before.nextNode;
     }
 
     //node to be removed
-    let remove = previous.nextNode;
+    let remove = before.nextNode;
 
-    //node that follows the one to be removed
-    let next = remove.nextNode;
+    //node after the one to be removed
+    let after = remove.nextNode;
 
     //update the previous node's nextNode property
-    previous.nextNode = next;
+    before.nextNode = after;
+
+    if (index === this._size - 1) {
+      this._tail = after;
+    }
 
     this._size--;
   }
