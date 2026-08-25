@@ -18,6 +18,7 @@ describe("Positive scenarios", () => {
 
     test("Append a node to the end of a list", () => {
       expect(list.size).toBe(3);
+      expect(list.head).toBe("B");
       expect(list.tail).toBe("D");
       list.append("E");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( E ) -> null");
@@ -29,6 +30,7 @@ describe("Positive scenarios", () => {
     test("Prepend a node to the start of a list", () => {
       expect(list.size).toBe(3);
       expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       list.prepend("A");
       expect(list.toString()).toBe("( A ) -> ( B ) -> ( C ) -> ( D ) -> null");
       expect(list.head).toBe("A");
@@ -47,6 +49,7 @@ describe("Positive scenarios", () => {
       );
       expect(list.head).toBe(123);
       expect(list.tail).toBe(false);
+      expect(list.size).toBe(4);
     });
   });
 
@@ -79,9 +82,11 @@ describe("Positive scenarios", () => {
   describe("pop() scenarios", () => {
     test("Pop returns value of head node", () => {
       expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       expect(list.pop()).toBe("B");
       expect(list.head).toBe("C");
+      expect(list.tail).toBe("D");
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
       expect(list.size).toBe(2);
     });
@@ -146,23 +151,35 @@ describe("Positive scenarios", () => {
 
   describe("removeAt() scenarios", () => {
     test("Remove node at start of list", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.removeAt(0);
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
+      expect(list.head).toBe("C");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(2);
     });
 
     test("Remove node from middle of list", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.removeAt(1);
       expect(list.toString()).toBe("( B ) -> ( D ) -> null");
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(2);
     });
 
     test("Remove node at end of list", () => {
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(3);
       list.removeAt(2);
       expect(list.toString()).toBe("( B ) -> ( C ) -> null");
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("C");
       expect(list.size).toBe(2);
     });
 

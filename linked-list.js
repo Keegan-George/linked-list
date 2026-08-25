@@ -172,7 +172,7 @@ class LinkedList {
     before.nextNode = after;
 
     if (index === this._size - 1) {
-      this._tail = after;
+      this._tail = before;
     }
 
     this._size--;
@@ -216,5 +216,11 @@ class Node {
     this.nextNode = null;
   }
 }
+
+const list = new LinkedList();
+list.append("B");
+list.append("C");
+list.append("D");
+list.removeAt(2);
 
 export { LinkedList };
