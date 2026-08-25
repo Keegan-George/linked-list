@@ -100,23 +100,19 @@ class LinkedList {
   }
 
   toString() {
+    let current = this._head;
+    let out = "";
+
     if (!this._size) {
-      return "";
+      return out;
     }
 
-    const values = [];
-
-    let current = this._head;
-
-    for (let i = 0; i < this._size; i++) {
-      values.push(current.value);
+    while (current) {
+      out += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
 
-    return values
-      .map((x) => `( ${x} )`)
-      .join(" -> ")
-      .concat(" -> null");
+    return out + "null";
   }
 
   insertAt(index, ...values) {
