@@ -65,6 +65,10 @@ class LinkedList {
     const value = this._head.value;
     this._head = this._head.nextNode;
 
+    if (!this._head) {
+      this._tail = this._head;
+    }
+
     this._size--;
 
     return value;
@@ -127,19 +131,19 @@ class LinkedList {
       before = before.nextNode;
     }
 
-    const nodeSequenceObject = this.#createNodeSequence(values);
+    const sequence = this.#createNodeSequence(values);
 
     if (index === 0) {
-      nodeSequenceObject.lastNode.nextNode = before;
-      this._head = nodeSequenceObject.firstNode;
+      sequence.lastNode.nextNode = before;
+      this._head = sequence.firstNode;
     } else if (index === this._size) {
-      before.nextNode = nodeSequenceObject.firstNode;
+      before.nextNode = sequence.firstNode;
     } else {
-      nodeSequenceObject.lastNode.nextNode = before.nextNode;
-      before.nextNode = nodeSequenceObject.firstNode;
+      sequence.lastNode.nextNode = before.nextNode;
+      before.nextNode = sequence.firstNode;
     }
 
-    this._size += nodeSequenceObject.size;
+    this._size += sequence.size;
   }
 
   removeAt(index) {
