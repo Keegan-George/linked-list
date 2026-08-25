@@ -11,32 +11,28 @@ describe("Positive scenarios", () => {
     list.append("D");
   });
 
-  describe("append(), prepend(), and size scenarios", () => {
-    test("Can display a string representation of the list", () => {
+  describe("append() and prepend()", () => {
+    test("Display a string representation of a list", () => {
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> null");
     });
 
-    test("Can append a node to the end of the list", () => {
+    test("Append a node to the end of a list", () => {
+      expect(list.size).toBe(3);
+      expect(list.tail).toBe("D");
       list.append("E");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( E ) -> null");
-    });
-
-    test("Can prepend a node to the start of the list", () => {
-      list.prepend("A");
-      expect(list.toString()).toBe("( A ) -> ( B ) -> ( C ) -> ( D ) -> null");
-    });
-
-    test("Can get the size of the list", () => {
-      expect(list.size).toBe(3);
-    });
-
-    test("Size of the list increases when a node is appended", () => {
-      list.append("D");
+      expect(list.head).toBe("B");
+      expect(list.tail).toBe("E");
       expect(list.size).toBe(4);
     });
 
-    test("Size of the list increases when a node is prepended", () => {
+    test("Prepend a node to the start of a list", () => {
+      expect(list.size).toBe(3);
+      expect(list.head).toBe("B");
       list.prepend("A");
+      expect(list.toString()).toBe("( A ) -> ( B ) -> ( C ) -> ( D ) -> null");
+      expect(list.head).toBe("A");
+      expect(list.tail).toBe("D");
       expect(list.size).toBe(4);
     });
 
@@ -49,26 +45,8 @@ describe("Positive scenarios", () => {
       expect(list.toString()).toBe(
         "( 123 ) -> ( true ) -> ( 1,2,3 ) -> ( false ) -> null",
       );
-    });
-  });
-
-  describe("head() and tail() scenarios", () => {
-    test("Can get the value of the head node in the list,", () => {
-      expect(list.head).toBe("B");
-    });
-
-    test("Prepended node becomes the new head node,", () => {
-      list.prepend("A");
-      expect(list.head).toBe("A");
-    });
-
-    test("Can get the value of the tail node in the list,", () => {
-      expect(list.tail).toBe("D");
-    });
-
-    test("Appended node becomes the new tail node", () => {
-      list.append("E");
-      expect(list.tail).toBe("E");
+      expect(list.head).toBe(123);
+      expect(list.tail).toBe(false);
     });
   });
 
@@ -85,40 +63,38 @@ describe("Positive scenarios", () => {
       expect(list.at(2)).toBe("D");
     });
 
-    test("Undefined if index equals size of the list", () => {
+    test("Undefined if index is negative", () => {
+      expect(list.at(-1)).toBeUndefined();
+    });
+
+    test("Undefined if index equals size of list", () => {
       expect(list.at(3)).toBeUndefined();
     });
 
-    test("Undefined if index is greater than size of the list", () => {
+    test("Undefined if index is greater than size of list", () => {
       expect(list.at(4)).toBeUndefined();
-    });
-
-    test("Undefined if index is negative", () => {
-      expect(list.at(-1)).toBeUndefined();
     });
   });
 
   describe("pop() scenarios", () => {
     test("Pop returns value of head node", () => {
+      expect(list.head).toBe("B");
+      expect(list.size).toBe(3);
       expect(list.pop()).toBe("B");
-    });
-
-    test("Pop removes head node from the list ", () => {
-      list.pop();
+      expect(list.head).toBe("C");
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
-    });
-
-    test("Pop decreases size of the list", () => {
-      list.pop();
       expect(list.size).toBe(2);
     });
 
     test("Pop repeatedly until list is empty", () => {
+      expect(list.size).toBe(3);
       list.pop();
       list.pop();
       list.pop();
       expect(list.size).toBe(0);
       expect(list.pop()).toBeUndefined();
+      expect(list.head).toBeUndefined();
+      expect(list.tail).toBeUndefined();
     });
   });
 
@@ -146,62 +122,63 @@ describe("Positive scenarios", () => {
   });
 
   describe("findIndex() scenarios", () => {
-    test("Returns index of value at start of list", () => {
+    test("Return index of value at start of list", () => {
       expect(list.findIndex("B")).toBe(0);
     });
 
-    test("Returns index of value in middle of list", () => {
+    test("Return index of value in middle of list", () => {
       expect(list.findIndex("C")).toBe(1);
     });
 
-    test("Returns index of value at end of list", () => {
+    test("Return index of value at end of list", () => {
       expect(list.findIndex("D")).toBe(2);
     });
 
-    test("Returns index of first match in list", () => {
+    test("Return index of first match in list", () => {
       list.append("D");
       expect(list.findIndex("D")).toBe(2);
     });
 
-    test("Index is -1 if value is not in list", () => {
+    test("Index -1 if value not in list", () => {
       expect(list.findIndex("Z")).toBe(-1);
     });
   });
 
   describe("removeAt() scenarios", () => {
     test("Remove node at start of list", () => {
+      expect(list.size).toBe(3);
       list.removeAt(0);
       expect(list.toString()).toBe("( C ) -> ( D ) -> null");
-    });
-
-    test("Remove node from the middle of list", () => {
-      list.removeAt(1);
-      expect(list.toString()).toBe("( B ) -> ( D ) -> null");
-    });
-
-    test("Remove node at the end of list", () => {
-      list.removeAt(2);
-      expect(list.toString()).toBe("( B ) -> ( C ) -> null");
-    });
-
-    test("Removing a node by its index decreases size of list", () => {
-      list.removeAt(2);
       expect(list.size).toBe(2);
     });
 
-    test("Throws range error if removeAt index is negative", () => {
+    test("Remove node from middle of list", () => {
+      expect(list.size).toBe(3);
+      list.removeAt(1);
+      expect(list.toString()).toBe("( B ) -> ( D ) -> null");
+      expect(list.size).toBe(2);
+    });
+
+    test("Remove node at end of list", () => {
+      expect(list.size).toBe(3);
+      list.removeAt(2);
+      expect(list.toString()).toBe("( B ) -> ( C ) -> null");
+      expect(list.size).toBe(2);
+    });
+
+    test("Throws range error if removeAt index negative", () => {
       expect(() => {
         list.removeAt(-1);
       }).toThrow(RangeError);
     });
 
-    test("Throws range error if removeAt index is equal to list size", () => {
+    test("Throws range error if removeAt index equals list size", () => {
       expect(() => {
         list.removeAt(3);
       }).toThrow(RangeError);
     });
 
-    test("Throws range error if removeAt index is greater than list size", () => {
+    test("Throws range error if removeAt index greater than list size", () => {
       expect(() => {
         list.removeAt(4);
       }).toThrow(RangeError);
@@ -210,39 +187,51 @@ describe("Positive scenarios", () => {
 
   describe("insertAt() scenarios", () => {
     test("Insert node before head node", () => {
+      expect(list.size).toBe(3);
       list.insertAt(0, "X");
       expect(list.toString()).toBe("( X ) -> ( B ) -> ( C ) -> ( D ) -> null");
+      expect(list.size).toBe(4);
     });
 
     test("Insert node before tail node", () => {
+      expect(list.size).toBe(3);
       list.insertAt(2, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( X ) -> ( D ) -> null");
+      expect(list.size).toBe(4);
     });
 
     test("Insert node after tail node", () => {
+      expect(list.size).toBe(3);
       list.insertAt(3, "X");
       expect(list.toString()).toBe("( B ) -> ( C ) -> ( D ) -> ( X ) -> null");
+      expect(list.size).toBe(4);
     });
 
     test("Insert several nodes before head node", () => {
+      expect(list.size).toBe(3);
       list.insertAt(0, "X", "Y");
       expect(list.toString()).toBe(
         "( X ) -> ( Y ) -> ( B ) -> ( C ) -> ( D ) -> null",
       );
+      expect(list.size).toBe(5);
     });
 
     test("Insert several nodes before tail node", () => {
+      expect(list.size).toBe(3);
       list.insertAt(2, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( X ) -> ( Y ) -> ( D ) -> null",
       );
+      expect(list.size).toBe(5);
     });
 
     test("Insert several nodes after tail node", () => {
+      expect(list.size).toBe(3);
       list.insertAt(3, "X", "Y");
       expect(list.toString()).toBe(
         "( B ) -> ( C ) -> ( D ) -> ( X ) -> ( Y ) -> null",
       );
+      expect(list.size).toBe(5);
     });
 
     test("Throws range error if insertAt index is negative", () => {
@@ -270,54 +259,56 @@ describe("Empty list scenarios", () => {
     list = new LinkedList();
   });
 
-  test("For empty list head returns undefined", () => {
+  test("head returns undefined for empty list", () => {
     expect(list.head).toBeUndefined();
   });
 
-  test("For empty list tail returns undefined", () => {
+  test("tail returns undefined for empty list", () => {
     expect(list.tail).toBeUndefined();
   });
 
-  test("For empty list at returns undefined", () => {
+  test("at() returns undefined for empty list", () => {
     expect(list.at(0)).toBeUndefined();
   });
 
-  test("For empty list pop returns undefined", () => {
+  test("pop() returns undefined for empty list", () => {
     expect(list.pop()).toBeUndefined();
   });
 
-  test("Size is 0 after repeated pops", () => {
+  test("size is 0 after repeated pops", () => {
     list.pop();
     list.pop();
     list.pop();
     expect(list.size).toBe(0);
   });
 
-  test("For empty list contains returns false", () => {
+  test("contains() returns false for empty list", () => {
     expect(list.contains("A")).toBe(false);
   });
 
-  test("For empty list findIndex returns -1", () => {
+  test("findIndex() returns -1 for empty list", () => {
     expect(list.findIndex("A")).toBe(-1);
   });
 
-  test("For empty list toString returns an empty string", () => {
+  test("toString() returns an empty string for empty list", () => {
     expect(list.toString()).toBe("");
   });
 
-  test("For empty list removeAt throws RangeError", () => {
+  test("removeAt() throws RangeError for empty list", () => {
     expect(() => {
       list.removeAt(0);
     }).toThrow(RangeError);
   });
 
   test("Can insertAt single node into empty list", () => {
+    expect(list.size).toBe(0);
     list.insertAt(0, "A");
     expect(list.toString()).toBe("( A ) -> null");
     expect(list.size).toBe(1);
   });
 
   test("Can insert multiple nodes into empty list", () => {
+    expect(list.size).toBe(0);
     list.insertAt(0, "A", "B", "C");
     expect(list.toString()).toBe("( A ) -> ( B ) -> ( C ) -> null");
     expect(list.size).toBe(3);
