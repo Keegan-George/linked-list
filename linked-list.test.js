@@ -63,12 +63,12 @@ describe("Positive scenarios", () => {
     });
 
     test("Can get the value of the tail node in the list,", () => {
-      expect(list.tail()).toBe("D");
+      expect(list.tail).toBe("D");
     });
 
     test("Appended node becomes the new tail node", () => {
       list.append("E");
-      expect(list.tail()).toBe("E");
+      expect(list.tail).toBe("E");
     });
   });
 
@@ -275,7 +275,7 @@ describe("Empty list scenarios", () => {
   });
 
   test("For empty list tail returns undefined", () => {
-    expect(list.tail()).toBeUndefined();
+    expect(list.tail).toBeUndefined();
   });
 
   test("For empty list at returns undefined", () => {

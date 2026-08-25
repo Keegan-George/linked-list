@@ -46,7 +46,7 @@ class LinkedList {
     return this._head?.value;
   }
 
-  tail() {
+  get tail() {
     return this._tail?.value;
   }
 
