@@ -317,6 +317,7 @@ describe("Empty list scenarios", () => {
   });
 
   test("size is 0 after repeated pops", () => {
+    expect(list.size).toBe(0);
     list.pop();
     list.pop();
     list.pop();
@@ -345,6 +346,8 @@ describe("Empty list scenarios", () => {
     expect(list.size).toBe(0);
     list.insertAt(0, "A");
     expect(list.toString()).toBe("( A ) -> null");
+    expect(list.head).toBe("A");
+    expect(list.tail).toBe("A");
     expect(list.size).toBe(1);
   });
 
@@ -352,6 +355,8 @@ describe("Empty list scenarios", () => {
     expect(list.size).toBe(0);
     list.insertAt(0, "A", "B", "C");
     expect(list.toString()).toBe("( A ) -> ( B ) -> ( C ) -> null");
+    expect(list.head).toBe("A");
+    expect(list.tail).toBe("C");
     expect(list.size).toBe(3);
   });
 });
@@ -362,9 +367,12 @@ describe("Performance tests", () => {
   });
 
   test("Create a large list", () => {
+    expect(list.size).toBe(0);
     for (let i = 0; i < 1000; i++) {
       list.append(i);
     }
     expect(list.size).toBe(1000);
+    expect(list.head).toBe(0);
+    expect(list.tail).toBe(999);
   });
 });
