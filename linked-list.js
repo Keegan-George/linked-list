@@ -10,9 +10,6 @@ class LinkedList {
 
     if (!this._head) {
       this._head = node;
-    }
-
-    if (!this._tail) {
       this._tail = node;
     } else {
       this._tail.nextNode = node;
