@@ -116,29 +116,27 @@ class LinkedList {
   }
 
   insertAt(index, ...values) {
-    if (index < 0 || index > this._size || this._size === 0) {
+    if (index < 0 || index > this._size) {
       throw new RangeError();
     }
 
-    //get the node prior to the specified
-    let preIndexNode = this._head;
+    //the node that will come before the inserted ones
+    let before = this._head;
 
     for (let i = 0; i < index - 1; i++) {
-      preIndexNode = preIndexNode.nextNode;
+      before = before.nextNode;
     }
-
-    const postIndexNode = preIndexNode.nextNode;
 
     const nodeSequenceObject = this.#createNodeSequence(values);
 
     if (index === 0) {
-      nodeSequenceObject.lastNode.nextNode = preIndexNode;
+      nodeSequenceObject.lastNode.nextNode = before;
       this._head = nodeSequenceObject.firstNode;
     } else if (index === this._size) {
-      preIndexNode.nextNode = nodeSequenceObject.firstNode;
+      before.nextNode = nodeSequenceObject.firstNode;
     } else {
-      preIndexNode.nextNode = nodeSequenceObject.firstNode;
-      nodeSequenceObject.lastNode.nextNode = postIndexNode;
+      nodeSequenceObject.lastNode.nextNode = before.nextNode;
+      before.nextNode = nodeSequenceObject.firstNode;
     }
 
     this._size += nodeSequenceObject.size;

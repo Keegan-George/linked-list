@@ -311,10 +311,16 @@ describe("Empty list scenarios", () => {
     }).toThrow(RangeError);
   });
 
-  test("For empty list insertAt throws RangeError", () => {
-    expect(() => {
-      list.insertAt(0, "A");
-    }).toThrow(RangeError);
+  test("Can insertAt single node into empty list", () => {
+    list.insertAt(0, "A");
+    expect(list.toString()).toBe("( A ) -> null");
+    expect(list.size).toBe(1);
+  });
+
+  test("Can insert multiple nodes into empty list", () => {
+    list.insertAt(0, "A", "B", "C");
+    expect(list.toString()).toBe("( A ) -> ( B ) -> ( C ) -> null");
+    expect(list.size).toBe(3);
   });
 });
 
