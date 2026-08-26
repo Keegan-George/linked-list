@@ -1,7 +1,7 @@
 class LinkedList {
   constructor() {
-    this._head;
-    this._tail;
+    this._head = null;
+    this._tail = null;
     this._size = 0;
   }
 
