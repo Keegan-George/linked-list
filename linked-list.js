@@ -70,13 +70,12 @@ class LinkedList {
   contains(value) {
     let current = this._head;
 
-    for (let i = 0; i < this._size; i++) {
+    while (current) {
       if (current.value === value) {
         return true;
       }
       current = current.nextNode;
     }
-
     return false;
   }
 
