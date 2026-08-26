@@ -81,13 +81,16 @@ class LinkedList {
 
   findIndex(value) {
     let current = this._head;
+    let i = 0;
 
-    for (let i = 0; i < this._size; i++) {
+    while (current) {
       if (current.value === value) {
         return i;
       }
       current = current.nextNode;
+      i++;
     }
+
     return -1;
   }
 
