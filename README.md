@@ -32,7 +32,7 @@ This is part of [The Odin Project's Full Stack JavaScript path](https://www.theo
 ## Example
 
 ```javascript
-const LinkedList = require("./LinkedList");
+import LinkedList from "./linked-list.js";
 
 // Instantiate new Linked List
 const list = new LinkedList();
