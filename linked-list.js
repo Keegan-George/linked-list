@@ -116,7 +116,7 @@ class LinkedList {
     }
 
     //get the node before the insertion index
-    const before = this.#getNode(index - 1) || this._head;
+    const before = this.#getNode(index - 1);
 
     const sequence = this.#createNodeSequence(values);
 
@@ -128,7 +128,7 @@ class LinkedList {
     }
 
     if (index === 0) {
-      sequence.lastNode.nextNode = before;
+      sequence.lastNode.nextNode = this._head;
       this._head = sequence.firstNode;
     } else if (index === this._size) {
       before.nextNode = sequence.firstNode;
@@ -152,7 +152,7 @@ class LinkedList {
     }
 
     //get the node before removal index
-    const before = this.#getNode(index - 1) || this._head;
+    const before = this.#getNode(index - 1);
 
     //node to be removed
     let remove = before.nextNode;
