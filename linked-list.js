@@ -46,15 +46,8 @@ class LinkedList {
   }
 
   at(index) {
-    if (!this._size || index < 0 || index >= this._size) {
-      return undefined;
-    }
-
-    let current = this._head;
-    for (let i = 0; i < index; i++) {
-      current = current.nextNode;
-    }
-    return current.value;
+    const node = this.#getNode(index);
+    return node?.value;
   }
 
   pop() {
@@ -120,12 +113,8 @@ class LinkedList {
       throw new RangeError();
     }
 
-    //node before the ones to be inserted
-    let before = this._head;
-
-    for (let i = 0; i < index - 1; i++) {
-      before = before.nextNode;
-    }
+    //get the node before the insertion index
+    const before = this.#getNode(index - 1) || this._head;
 
     const sequence = this.#createNodeSequence(values);
 
@@ -154,17 +143,14 @@ class LinkedList {
     if (index < 0 || index >= this._size) {
       throw new RangeError();
     }
+
     if (index === 0) {
       this.pop();
       return;
     }
 
-    //get the node before the one to be removed
-    let before = this._head;
-
-    for (let i = 0; i < index - 1; i++) {
-      before = before.nextNode;
-    }
+    //get the node before removal index
+    const before = this.#getNode(index - 1) || this._head;
 
     //node to be removed
     let remove = before.nextNode;
@@ -180,6 +166,18 @@ class LinkedList {
     }
 
     this._size--;
+  }
+
+  #getNode(index) {
+    if (index < 0 || index >= this._size) {
+      return null;
+    }
+
+    let current = this._head;
+    for (let i = 0; i < index; i++) {
+      current = current.nextNode;
+    }
+    return current;
   }
 
   #createNodeSequence(values) {
@@ -211,5 +209,10 @@ class Node {
     this.nextNode = null;
   }
 }
+
+const list = new LinkedList();
+list.append("A");
+list.append("B");
+list.insertAt(0, "Z");
 
 export { LinkedList };
